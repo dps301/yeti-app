@@ -5,21 +5,26 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { MainPageModule } from '../pages/main/main.module';
+import { IntroducePageModule } from '../pages/introduce/introduce.module';
+import { FeedPageModule } from '../pages/feed/feed.module';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      mode: 'ios'
+    }),
+    MainPageModule,
+    IntroducePageModule,
+    FeedPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
   ],
   providers: [
     StatusBar,

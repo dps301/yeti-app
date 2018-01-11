@@ -1,1 +1,40 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="container" side="left" type="overlay">
+    <ion-content>
+        <ion-list (click)="navGo(introduce)">
+            인사말
+        </ion-list>
+        <ion-list (click)="navGo(feed)">
+            피드
+        </ion-list>
+    </ion-content>
+</ion-menu>
+<ion-header (click)="toggleMenu()" class="main-header">
+    <ion-toolbar>
+        <ion-buttons start>
+            <ion-icon class="menu-icon" name="ios-menu"></ion-icon>
+        </ion-buttons>
+        <ion-title>
+            예티쉼터
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-nav #container [root]="rootPage"></ion-nav>
+</ion-content>
+<ion-footer class="main-footer">
+    <div class="tab-item">
+        전화
+    </div>
+    <div class="tab-item">
+        페이스북
+    </div>
+    <div class="tab-item">
+        메뉴1
+    </div>
+    <div class="tab-item">
+        메뉴2
+    </div>
+    <div class="tab-item">
+        메뉴3
+    </div>
+</ion-footer>
