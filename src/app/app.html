@@ -1,5 +1,8 @@
 <ion-menu [content]="container" side="left" type="overlay">
     <ion-content>
+        <ion-list (click)="navGo(main)">
+            메인
+        </ion-list>
         <ion-list (click)="navGo(introduce)">
             인사말
         </ion-list>

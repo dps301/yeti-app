@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { MainPageModule } from '../pages/main/main.module';
 import { IntroducePageModule } from '../pages/introduce/introduce.module';
 import { FeedPageModule } from '../pages/feed/feed.module';
+import { SafeHtmlPipe } from '../directive/pipe.safehtml';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { FeedPageModule } from '../pages/feed/feed.module';
     }),
     MainPageModule,
     IntroducePageModule,
-    FeedPageModule
+    FeedPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,7 +30,8 @@ import { FeedPageModule } from '../pages/feed/feed.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SafeHtmlPipe
   ]
 })
 export class AppModule {}

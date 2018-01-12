@@ -16,6 +16,7 @@ export class MyApp {
 
   rootPage: any = MainPage;
 
+  main: any = MainPage;
   introduce: any = IntroducePage;
   feed: any = FeedPage;
 

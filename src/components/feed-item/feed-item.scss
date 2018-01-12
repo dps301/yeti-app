@@ -1,3 +1,65 @@
 feed-item {
+    .feed {
+        box-shadow: 0px 0px 40px 1px rgba(0, 0, 0, 0.1);
+        padding: 15px 10px;
 
+        .date {
+            font-size: 1.2rem;
+            color: #adaeaf;
+        }
+        .name {
+            color: #745c4b;
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        .container {
+            border-bottom: 1px solid black;
+
+            .title {
+                border-bottom: 1px solid black;
+                padding: 20px 0px;
+
+                display: flex;
+                justify-content: space-between;
+            }
+            .content {
+                padding: 20px 10px;
+            }
+        }
+        .comment {
+            padding: 20px 0px;
+            font-size: 1.2rem;
+
+            input {
+                width: 100%;
+                border-radius: 25px;
+                border: 1px solid lightgray;
+                padding: 5px 15px;
+            }
+
+            .comment-list {
+                .comment-item {
+                    padding: 10px;
+
+                    .content {
+                        display: flex;
+
+                        .name {
+                            flex-basis: 20%;
+                            flex-shrink: 0;
+                            font-size: 1.2rem;
+                        }
+                        .text {
+                            flex-grow: 1;
+                            font-weight: 600;
+                        }
+                    }
+                    .date {
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+    }
 }
