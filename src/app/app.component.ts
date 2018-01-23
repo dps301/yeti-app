@@ -40,8 +40,16 @@ export class MyApp {
   }
 
   navGo(page) {
-    this.nav.setRoot(page, {}, {animate: true, animation: 'ios'})
+    this.nav.push(page, {}, {animate: true, animation: 'ios'})
     this.toggleMenu();
+  }
+
+  getPages() {
+    return this.nav.getViews().length;
+  }
+
+  back() {
+    this.nav.pop();
   }
 }
 

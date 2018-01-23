@@ -26,8 +26,11 @@
 <ion-header class="main-header">
     <ion-toolbar>
         <ion-buttons start>
-            <button ion-button ion-only (click)="toggleMenu()">
+            <button ion-button ion-only (click)="toggleMenu()" *ngIf="getPages() < 2">
                 <ion-icon class="menu-icon" name="ios-menu"></ion-icon>
+            </button>
+            <button ion-button ion-only (click)="back()" *ngIf="getPages() > 1">
+                <ion-icon class="menu-icon" name="ios-arrow-back"></ion-icon>
             </button>
         </ion-buttons>
         <ion-title>

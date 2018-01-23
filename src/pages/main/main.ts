@@ -49,6 +49,6 @@ export class MainPage {
   }
 
   goTo(link) {
-    this.app.getRootNavs()[0].setRoot(link, {}, {animate: true, animation: 'ios'});
+    this.app.getRootNavs()[0].push(link, {}, {animate: true, animation: 'ios'});
   }
 }
