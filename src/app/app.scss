@@ -1,3 +1,5 @@
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
 // http://ionicframework.com/docs/theming/
 
 
@@ -15,15 +17,21 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+html, body, ion-app {
+    font-family: 'Jeju Gothic', sans-serif !important;
+}
+
 .main-header {
     ion-toolbar{
         .toolbar-background {
-            background: linear-gradient(90deg, #df6766, #eb917f);
+            background: #f697a3;
         }
         .toolbar-title {
+            font-weight: lighter;
+            font-size: 2rem;
             color: white;
+            letter-spacing: 1px;
         }
-    
         .menu-icon {
             font-size: 2.5rem;
             color: white;
@@ -32,15 +40,26 @@
     }
 }
 
-.main-footer {
-    display: flex;
-    flex-direction: row;
-    background: linear-gradient(90deg, #df6766, #eb917f);
+.menu-inner {
+    width: 65% !important;
 
-    .tab-item {
-        padding: 12px 0px;
-        flex: 1;
-        text-align: center;
+    .scroll-content {
+        padding: 30px;
+        background: #f697a3;
         color: white;
+        font-size: 1.8rem;
     }
 }
+
+// .main-footer {
+//     display: flex;
+//     flex-direction: row;
+//     background: linear-gradient(90deg, #df6766, #eb917f);
+
+//     .tab-item {
+//         padding: 12px 0px;
+//         flex: 1;
+//         text-align: center;
+//         color: white;
+//     }
+// }
