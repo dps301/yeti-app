@@ -9,6 +9,10 @@ import { MainPageModule } from '../pages/main/main.module';
 import { IntroducePageModule } from '../pages/introduce/introduce.module';
 import { FeedPageModule } from '../pages/feed/feed.module';
 import { SafeHtmlPipe } from '../directive/pipe.safehtml';
+import { SupportPageModule } from '../pages/support/support.module';
+import { OrgChartPageModule } from '../pages/org-chart/org-chart.module';
+import { RoadToPageModule } from '../pages/road-to/road-to.module';
+import { NoticePageModule } from '../pages/notice/notice.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,10 @@ import { SafeHtmlPipe } from '../directive/pipe.safehtml';
     }),
     MainPageModule,
     IntroducePageModule,
+    SupportPageModule,
+    OrgChartPageModule,
+    RoadToPageModule,
+    NoticePageModule,
     FeedPageModule,
   ],
   bootstrap: [IonicApp],

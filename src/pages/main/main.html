@@ -4,7 +4,7 @@
   </div>
   <div class="menu-row">
     <div class="menu-item" *ngFor="let item of menu">
-      <div class="content">
+      <div class="content" (click)="goTo(item.link)">
         {{item.name}}
       </div>
     </div>

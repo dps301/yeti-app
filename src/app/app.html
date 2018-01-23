@@ -6,16 +6,16 @@
         <ion-list (click)="navGo(introduce)">
             인사말
         </ion-list>
-        <ion-list (click)="navGo(feed)">
+        <ion-list (click)="navGo(support)">
             후원안내
         </ion-list>
-        <ion-list (click)="navGo(feed)">
+        <ion-list (click)="navGo(org_chart)">
             조직도
         </ion-list>
-        <ion-list (click)="navGo(feed)">
+        <ion-list (click)="navGo(road_to)">
             오시는 길
         </ion-list>
-        <ion-list (click)="navGo(feed)">
+        <ion-list (click)="navGo(notice)">
             공지사항
         </ion-list>
         <ion-list (click)="navGo(feed)">
@@ -23,10 +23,12 @@
         </ion-list>
     </ion-content>
 </ion-menu>
-<ion-header (click)="toggleMenu()" class="main-header">
+<ion-header class="main-header">
     <ion-toolbar>
         <ion-buttons start>
-            <ion-icon class="menu-icon" name="ios-menu"></ion-icon>
+            <button ion-button ion-only (click)="toggleMenu()">
+                <ion-icon class="menu-icon" name="ios-menu"></ion-icon>
+            </button>
         </ion-buttons>
         <ion-title>
             예티쉼터

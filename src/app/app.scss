@@ -19,6 +19,7 @@
 
 html, body, ion-app {
     font-family: 'Jeju Gothic', sans-serif !important;
+    line-height: 2.2rem;
 }
 
 .main-header {
@@ -45,10 +46,14 @@ html, body, ion-app {
 
     .scroll-content {
         padding: 30px;
-        background: #f697a3;
+        background: #f697a3 !important;
         color: white;
         font-size: 1.8rem;
     }
+}
+
+.scroll-content {
+    background: #f3f3f3;
 }
 
 // .main-footer {

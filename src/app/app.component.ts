@@ -6,6 +6,10 @@ import { MenuController } from 'ionic-angular';
 
 import { MainPage } from '../pages/main/main';
 import { IntroducePage } from '../pages/introduce/introduce';
+import { SupportPage } from '../pages/support/support';
+import { OrgChartPage } from '../pages/org-chart/org-chart';
+import { RoadToPage } from '../pages/road-to/road-to';
+import { NoticePage } from '../pages/notice/notice';
 import { FeedPage } from '../pages/feed/feed';
 
 @Component({
@@ -18,6 +22,10 @@ export class MyApp {
 
   main: any = MainPage;
   introduce: any = IntroducePage;
+  support: any = SupportPage;
+  org_chart: any = OrgChartPage;
+  road_to: any = RoadToPage;
+  notice: any = NoticePage;  
   feed: any = FeedPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController) {
@@ -32,8 +40,7 @@ export class MyApp {
   }
 
   navGo(page) {
-    // this.nav.push(page);
-    this.rootPage = page;
+    this.nav.setRoot(page)
     this.toggleMenu();
   }
 }
