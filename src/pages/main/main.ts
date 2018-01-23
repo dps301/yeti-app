@@ -9,22 +9,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class MainPage {
   menu: Array<any> = [
     {
-      name: '1'
+      name: '인사말'
     },
     {
-      name: '2'
+      name: '후원안내'
     },
     {
-      name: '3'
+      name: '조직도'
     },
     {
-      name: '4'
+      name: '오시는 길'
     },
     {
-      name: '5'
+      name: '공지사항'
     },
     {
-      name: '6'
+      name: '소식'
     }
   ];
 
