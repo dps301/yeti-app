@@ -40,7 +40,7 @@ export class MyApp {
   }
 
   navGo(page) {
-    this.nav.setRoot(page)
+    this.nav.setRoot(page, {}, {animate: true, animation: 'ios'})
     this.toggleMenu();
   }
 }

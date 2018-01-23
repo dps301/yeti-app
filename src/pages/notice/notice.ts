@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the NoticePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { NoticeDetailPage } from '../notice-detail/notice-detail';
 
 @IonicPage()
 @Component({
@@ -14,12 +8,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'notice.html',
 })
 export class NoticePage {
+  notice_list: Array<any> = [
+    {
+      title: '공지1'
+    },
+    {
+      title: '공지2'
+    },
+    {
+      title: '공지3'
+    },
+    {
+      title: '공지4'
+    }
+  ]
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NoticePage');
   }
 
+  goDetail(id) {
+    this.navCtrl.push(NoticeDetailPage, {id: id});
+  }
 }

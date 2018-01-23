@@ -8,11 +8,11 @@ import { MyApp } from './app.component';
 import { MainPageModule } from '../pages/main/main.module';
 import { IntroducePageModule } from '../pages/introduce/introduce.module';
 import { FeedPageModule } from '../pages/feed/feed.module';
-import { SafeHtmlPipe } from '../directive/pipe.safehtml';
 import { SupportPageModule } from '../pages/support/support.module';
 import { OrgChartPageModule } from '../pages/org-chart/org-chart.module';
 import { RoadToPageModule } from '../pages/road-to/road-to.module';
 import { NoticePageModule } from '../pages/notice/notice.module';
+import { SafeHtmlModule } from '../directive/safe-html/pipe.safehtml.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { NoticePageModule } from '../pages/notice/notice.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {
-      mode: 'ios'
+      mode: 'ios',
     }),
     MainPageModule,
     IntroducePageModule,
@@ -30,6 +30,7 @@ import { NoticePageModule } from '../pages/notice/notice.module';
     RoadToPageModule,
     NoticePageModule,
     FeedPageModule,
+    SafeHtmlModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,7 +40,6 @@ import { NoticePageModule } from '../pages/notice/notice.module';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SafeHtmlPipe
   ]
 })
 export class AppModule {}
