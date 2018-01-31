@@ -13,6 +13,7 @@ import { OrgChartPageModule } from '../pages/org-chart/org-chart.module';
 import { RoadToPageModule } from '../pages/road-to/road-to.module';
 import { NoticePageModule } from '../pages/notice/notice.module';
 import { SafeHtmlModule } from '../directive/safe-html/pipe.safehtml.module';
+import { SafariViewController } from '@ionic-native/safari-view-controller';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { SafeHtmlModule } from '../directive/safe-html/pipe.safehtml.module';
     RoadToPageModule,
     NoticePageModule,
     FeedPageModule,
-    SafeHtmlModule
+    SafeHtmlModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,6 +41,7 @@ import { SafeHtmlModule } from '../directive/safe-html/pipe.safehtml.module';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SafariViewController
   ]
 })
 export class AppModule {}
