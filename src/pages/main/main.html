@@ -5,6 +5,7 @@
   <div class="menu-row">
     <div class="menu-item" *ngFor="let item of menu">
       <div class="content" (click)="goTo(item.link)">
+        <img [src]="item.img" alt="">
         {{item.name}}
       </div>
     </div>
