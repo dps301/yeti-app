@@ -1,3 +1,5 @@
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
 // http://ionicframework.com/docs/theming/
 
 
@@ -15,32 +17,70 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+html, body, ion-app {
+    font-family: 'Jeju Gothic', sans-serif !important;
+    line-height: 2.2rem;
+}
+
 .main-header {
     ion-toolbar{
         .toolbar-background {
-            background: linear-gradient(90deg, #df6766, #eb917f);
+            background: #f697a3;
         }
         .toolbar-title {
+            font-weight: lighter;
+            font-size: 2rem;
             color: white;
+            letter-spacing: 1px;
         }
-    
         .menu-icon {
-            font-size: 2.5rem;
+            font-size: 4rem;
             color: white;
             z-index: 999;
+            margin-left: 15px;
         }
     }
 }
 
-.main-footer {
-    display: flex;
-    flex-direction: row;
-    background: linear-gradient(90deg, #df6766, #eb917f);
+.menu-inner {
+    width: 65% !important;
 
-    .tab-item {
-        padding: 12px 0px;
-        flex: 1;
-        text-align: center;
+    .scroll-content {
+        padding: 30px;
+        background: #f697a3 !important;
         color: white;
+        font-size: 1.8rem;
     }
 }
+
+.scroll-content {
+    background: #f3f3f3;
+}
+
+.back-btn {
+    position: fixed;
+    z-index: 10;
+    bottom: 5%;
+    left: 10%;
+    border-radius: 50%;
+    background: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.06);
+}
+
+// .main-footer {
+//     display: flex;
+//     flex-direction: row;
+//     background: linear-gradient(90deg, #df6766, #eb917f);
+
+//     .tab-item {
+//         padding: 12px 0px;
+//         flex: 1;
+//         text-align: center;
+//         color: white;
+//     }
+// }

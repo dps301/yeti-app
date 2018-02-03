@@ -2,12 +2,10 @@
   <div class="main-img">
     <img src="assets/imgs/main.jpg" alt="">
   </div>
-  <div class="menu-box">
-    <div class="menu-row">
-      <div class="menu-item" *ngFor="let item of menu">
-        <div class="content" square>
-          {{item.name}}
-        </div>
+  <div class="menu-row">
+    <div class="menu-item" *ngFor="let item of menu">
+      <div class="content" (click)="goTo(item.link)">
+        {{item.name}}
       </div>
     </div>
   </div>

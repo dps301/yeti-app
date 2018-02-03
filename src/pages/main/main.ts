@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IntroducePage } from '../introduce/introduce';
+import { SupportPage } from '../support/support';
+import { OrgChartPage } from '../org-chart/org-chart';
+import { RoadToPage } from '../road-to/road-to';
+import { NoticePage } from '../notice/notice';
+import { FeedPage } from '../feed/feed';
+import { App } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -9,30 +16,39 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class MainPage {
   menu: Array<any> = [
     {
-      name: '1'
+      name: '인사말',
+      link: IntroducePage
     },
     {
-      name: '2'
+      name: '후원안내',
+      link: SupportPage
     },
     {
-      name: '3'
+      name: '조직도',
+      link: OrgChartPage
     },
     {
-      name: '4'
+      name: '오시는 길',
+      link: RoadToPage
     },
     {
-      name: '5'
+      name: '공지사항',
+      link: NoticePage
     },
     {
-      name: '6'
+      name: '소식',
+      link: FeedPage
     }
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MainPage');
   }
 
+  goTo(link) {
+    this.app.getRootNavs()[0].push(link, {}, {animate: true, animation: 'ios'});
+  }
 }

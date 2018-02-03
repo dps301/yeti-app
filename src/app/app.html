@@ -6,15 +6,32 @@
         <ion-list (click)="navGo(introduce)">
             인사말
         </ion-list>
+        <ion-list (click)="navGo(support)">
+            후원안내
+        </ion-list>
+        <ion-list (click)="navGo(org_chart)">
+            조직도
+        </ion-list>
+        <ion-list (click)="navGo(road_to)">
+            오시는 길
+        </ion-list>
+        <ion-list (click)="navGo(notice)">
+            공지사항
+        </ion-list>
         <ion-list (click)="navGo(feed)">
-            피드
+            소식
         </ion-list>
     </ion-content>
 </ion-menu>
-<ion-header (click)="toggleMenu()" class="main-header">
+<ion-header class="main-header">
     <ion-toolbar>
         <ion-buttons start>
-            <ion-icon class="menu-icon" name="ios-menu"></ion-icon>
+            <button ion-button ion-only (click)="toggleMenu()" *ngIf="getPages() < 2">
+                <ion-icon class="menu-icon" name="ios-menu"></ion-icon>
+            </button>
+            <button ion-button ion-only (click)="back()" *ngIf="getPages() > 1">
+                <ion-icon class="menu-icon" name="ios-arrow-back"></ion-icon>
+            </button>
         </ion-buttons>
         <ion-title>
             예티쉼터
@@ -24,7 +41,7 @@
 <ion-content>
     <ion-nav #container [root]="rootPage"></ion-nav>
 </ion-content>
-<ion-footer class="main-footer">
+<!-- <ion-footer class="main-footer">
     <div class="tab-item">
         전화
     </div>
@@ -40,4 +57,4 @@
     <div class="tab-item">
         메뉴3
     </div>
-</ion-footer>
+</ion-footer> -->

@@ -1,0 +1,22 @@
+page-notice-detail {
+    .notice-content {
+        background: white;
+        border-top: #f595a2 20px solid;
+        margin: 0px 10px;
+        padding: 30px 20px 30px 20px;
+        box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.06);
+        
+        .title {
+            font-size: 20px;
+            padding: 0px 10px;
+            padding-bottom: 20px;
+            border-bottom: #f595a2 2px solid;
+            font-weight: 600;
+            color: #7b5842;
+        }
+        .content {
+            padding: 0px 10px;
+            padding-top: 20px;
+        }
+    }
+}
