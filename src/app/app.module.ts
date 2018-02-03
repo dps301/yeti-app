@@ -13,12 +13,16 @@ import { OrgChartPageModule } from '../pages/org-chart/org-chart.module';
 import { RoadToPageModule } from '../pages/road-to/road-to.module';
 import { NoticePageModule } from '../pages/notice/notice.module';
 import { SafeHtmlModule } from '../directive/safe-html/pipe.safehtml.module';
+import { HttpService } from '../services/http.service';
+import { ServerAddr } from '../services/server.addr';
+import { HttpModule } from "@angular/http";
 
 @NgModule({
   declarations: [
     MyApp,
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp, {
       mode: 'ios',
@@ -37,6 +41,8 @@ import { SafeHtmlModule } from '../directive/safe-html/pipe.safehtml.module';
     MyApp,
   ],
   providers: [
+    HttpService,
+    ServerAddr,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

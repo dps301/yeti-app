@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpService } from '../../services/http.service';
 
 @IonicPage()
 @Component({
@@ -7,12 +8,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'introduce.html',
 })
 export class IntroducePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  data:any = {
+    document:null
+  };
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http:HttpService) {
+    
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad IntroducePage');
+    this.load();
+  }
+  load(){
+    this.http.get(`/introduce`)
+    .subscribe( data=>{
+      this.data = data.json();
+    },
+    error=>{
+      console.log(error)
+    })
   }
 
 }
