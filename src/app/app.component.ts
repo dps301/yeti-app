@@ -11,6 +11,7 @@ import { OrgChartPage } from '../pages/org-chart/org-chart';
 import { RoadToPage } from '../pages/road-to/road-to';
 import { NoticePage } from '../pages/notice/notice';
 import { FeedPage } from '../pages/feed/feed';
+import { SafariViewController } from '@ionic-native/safari-view-controller';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,7 +29,7 @@ export class MyApp {
   notice: any = NoticePage;  
   feed: any = FeedPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController, private safari: SafariViewController) {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
@@ -50,6 +51,33 @@ export class MyApp {
 
   back() {
     this.nav.pop();
+  }
+
+  facebook() {
+    this.safari.isAvailable()
+    .then((available: boolean) => {
+        if (available) {
+          this.safari.show({
+            url: 'https://www.facebook.com',
+            hidden: false,
+            animated: false,
+            transition: 'curl',
+            enterReaderModeIfAvailable: true,
+            tintColor: '#ff0000'
+          })
+          .subscribe((result: any) => {
+              if(result.event === 'opened') console.log('Opened');
+              else if(result.event === 'loaded') console.log('Loaded');
+              else if(result.event === 'closed') console.log('Closed');
+            },
+            (error: any) => console.error(error)
+          );
+
+        } else {
+          // use fallback browser, example InAppBrowser
+        }
+      }
+    );
   }
 }
 

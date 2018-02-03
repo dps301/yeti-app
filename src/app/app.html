@@ -27,15 +27,20 @@
     <ion-toolbar>
         <ion-buttons start>
             <button ion-button ion-only (click)="toggleMenu()" *ngIf="getPages() < 2">
-                <ion-icon class="menu-icon" name="ios-menu"></ion-icon>
+                <ion-icon class="menu-icon left" name="ios-menu"></ion-icon>
             </button>
             <button ion-button ion-only (click)="back()" *ngIf="getPages() > 1">
-                <ion-icon class="menu-icon" name="ios-arrow-back"></ion-icon>
+                <ion-icon class="menu-icon left" name="ios-arrow-back"></ion-icon>
             </button>
         </ion-buttons>
         <ion-title>
-            예티쉼터
+            <img src="assets/imgs/logo_white.png" alt="">
         </ion-title>
+        <ion-buttons end>
+            <button ion-button ion-only (click)="facebook()">
+                <ion-icon class="menu-icon right" name="logo-facebook"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 <ion-content>

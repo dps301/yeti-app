@@ -5,7 +5,10 @@
   <div class="menu-row">
     <div class="menu-item" *ngFor="let item of menu">
       <div class="content" (click)="goTo(item.link)">
-        {{item.name}}
+        <img [src]="item.img" alt="">
+        <div style="width: 100%;">
+          {{item.name}}
+        </div>
       </div>
     </div>
   </div>

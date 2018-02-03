@@ -17,27 +17,33 @@ export class MainPage {
   menu: Array<any> = [
     {
       name: '인사말',
-      link: IntroducePage
+      link: IntroducePage,
+      img: 'assets/imgs/handshake.png'
     },
     {
       name: '후원안내',
-      link: SupportPage
+      link: SupportPage,
+      img: 'assets/imgs/charity.png'
     },
     {
       name: '조직도',
-      link: OrgChartPage
+      link: OrgChartPage,
+      img: 'assets/imgs/diagram.png'
     },
     {
       name: '오시는 길',
-      link: RoadToPage
+      link: RoadToPage,
+      img: 'assets/imgs/map.png'
     },
     {
       name: '공지사항',
-      link: NoticePage
+      link: NoticePage,
+      img: 'assets/imgs/megaphone.png'
     },
     {
       name: '소식',
-      link: FeedPage
+      link: FeedPage,
+      img: 'assets/imgs/email.png'
     }
   ];
 

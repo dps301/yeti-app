@@ -16,6 +16,7 @@ import { SafeHtmlModule } from '../directive/safe-html/pipe.safehtml.module';
 import { HttpService } from '../services/http.service';
 import { ServerAddr } from '../services/server.addr';
 import { HttpModule } from "@angular/http";
+import { SafariViewController } from '@ionic-native/safari-view-controller';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { HttpModule } from "@angular/http";
     RoadToPageModule,
     NoticePageModule,
     FeedPageModule,
-    SafeHtmlModule
+    SafeHtmlModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,6 +47,7 @@ import { HttpModule } from "@angular/http";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SafariViewController
   ]
 })
 export class AppModule {}
