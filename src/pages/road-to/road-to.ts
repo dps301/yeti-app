@@ -39,6 +39,5 @@ export class RoadToPage {
         y: 37.39279717586919,
         coordType: 'wgs84'
     });
-}
-
+  }
 }

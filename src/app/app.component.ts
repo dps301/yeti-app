@@ -21,7 +21,7 @@ declare const Kakao:any;
 export class MyApp {
   @ViewChild('container') nav: NavController;
 
-  rootPage: any = AdminMainPage;
+  rootPage: any = MainPage;
 
   main: any = MainPage;
   introduce: any = IntroducePage;
