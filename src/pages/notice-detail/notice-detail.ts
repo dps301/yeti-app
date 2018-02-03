@@ -7,8 +7,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'notice-detail.html',
 })
 export class NoticeDetailPage {
-
+  item:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.item = this.navParams.data.data;
   }
 
   ionViewDidLoad() {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NoticeDetailPage } from '../notice-detail/notice-detail';
+import { HttpService } from '../../services/http.service';
 
 @IonicPage()
 @Component({
@@ -8,28 +9,24 @@ import { NoticeDetailPage } from '../notice-detail/notice-detail';
   templateUrl: 'notice.html',
 })
 export class NoticePage {
-  notice_list: Array<any> = [
-    {
-      title: '공지1'
-    },
-    {
-      title: '공지2'
-    },
-    {
-      title: '공지3'
-    },
-    {
-      title: '공지4'
-    }
-  ]
+  limit=5;
+  offset=0;
+  notice_list: Array<any>
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private http:HttpService) {
+    this.load();
   }
 
   ionViewDidLoad() {
   }
 
-  goDetail(id) {
-    this.navCtrl.push(NoticeDetailPage, {id: id});
+  goDetail(data) {
+    this.navCtrl.push(NoticeDetailPage, {data: data});
+  }
+  load(){
+    this.http.get(`/notice?limit=5&offset=${this.offset}`)
+    .subscribe(data =>{
+      this.notice_list = data.json();
+    })
   }
 }

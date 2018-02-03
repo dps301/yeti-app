@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { ContentComponent } from './content/content';
 
 @NgModule({
-	declarations: [ ContentComponent ],
+	declarations: [ ContentComponent,
+     ],
 	imports: [],
-	exports: [ ContentComponent ]
+	exports: [ ContentComponent,
+     ]
 })
 
 export class ComponentsModule {}

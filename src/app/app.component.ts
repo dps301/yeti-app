@@ -12,6 +12,8 @@ import { RoadToPage } from '../pages/road-to/road-to';
 import { NoticePage } from '../pages/notice/notice';
 import { FeedPage } from '../pages/feed/feed';
 import { SafariViewController } from '@ionic-native/safari-view-controller';
+import { AdminMainPage } from '../pages/admin-main/admin-main';
+declare const Kakao:any;
 
 @Component({
   templateUrl: 'app.html'
@@ -19,7 +21,7 @@ import { SafariViewController } from '@ionic-native/safari-view-controller';
 export class MyApp {
   @ViewChild('container') nav: NavController;
 
-  rootPage: any = MainPage;
+  rootPage: any = AdminMainPage;
 
   main: any = MainPage;
   introduce: any = IntroducePage;
@@ -34,6 +36,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+    Kakao.init('803c6435507c9f64e94bae8fd137012e');
   }
 
   toggleMenu() {

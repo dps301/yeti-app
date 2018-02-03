@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, Slides } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { MainPageModule } from '../pages/main/main.module';
 import { IntroducePageModule } from '../pages/introduce/introduce.module';
 import { FeedPageModule } from '../pages/feed/feed.module';
 import { SupportPageModule } from '../pages/support/support.module';
@@ -17,6 +16,10 @@ import { HttpService } from '../services/http.service';
 import { ServerAddr } from '../services/server.addr';
 import { HttpModule } from "@angular/http";
 import { SafariViewController } from '@ionic-native/safari-view-controller';
+import { FeedItemModule } from '../components/feed-item/feed-item.module';
+import { FeedItemComponent } from '../components/feed-item/feed-item';
+import { MainPageModule } from '../pages/main/main.module';
+import { AdminMainPageModule } from '../pages/admin-main/admin-main.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,8 @@ import { SafariViewController } from '@ionic-native/safari-view-controller';
     NoticePageModule,
     FeedPageModule,
     SafeHtmlModule,
+    AdminMainPageModule
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [

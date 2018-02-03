@@ -1,5 +1,3 @@
 <ion-content padding>
-  <feed-item></feed-item>
-  <feed-item></feed-item>
-  <feed-item></feed-item>
+  <feed-item *ngFor="let item of list" [item]="item" ></feed-item>
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { HttpService } from '../../services/http.service';
+import { AdminMainPage } from '../admin-main/admin-main';
 
 @IonicPage()
 @Component({
@@ -11,7 +12,8 @@ export class IntroducePage {
   data:any = {
     document:null
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http:HttpService) {
+  time = 0; 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http:HttpService, public app: App) {
     
   }
 
@@ -26,6 +28,13 @@ export class IntroducePage {
     error=>{
       console.log(error)
     })
+  }
+  admin(){
+    if(this.time != 1){
+      this.time++;
+    } else {
+      this.app.getRootNavs()[0].push(AdminMainPage, {}, {animate: true, animation: 'ios'});
+    }
   }
 
 }

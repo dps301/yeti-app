@@ -2,7 +2,7 @@
     <div class="title">
         공지사항
     </div>
-    <div class="row" (click)="goDetail(item.id)" *ngFor="let item of notice_list">
+    <div class="row" (click)="goDetail(item)" *ngFor="let item of notice_list">
         {{item.title}}
     </div>
 </ion-content>
