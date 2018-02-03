@@ -44,7 +44,7 @@ export class MyApp {
   }
 
   navGo(page) {
-    this.nav.push(page, {}, {animate: true, animation: 'ios'})
+    this.nav.push(page, {}, {animate: true, animation: 'ios'});
     this.toggleMenu();
   }
 
