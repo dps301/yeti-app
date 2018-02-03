@@ -35,8 +35,8 @@ export class MyApp {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
+      Kakao.init('803c6435507c9f64e94bae8fd137012e');
     });
-    Kakao.init('803c6435507c9f64e94bae8fd137012e');
   }
 
   toggleMenu() {
