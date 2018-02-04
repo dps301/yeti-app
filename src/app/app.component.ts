@@ -11,8 +11,8 @@ import { OrgChartPage } from '../pages/org-chart/org-chart';
 import { RoadToPage } from '../pages/road-to/road-to';
 import { NoticePage } from '../pages/notice/notice';
 import { FeedPage } from '../pages/feed/feed';
-import { SafariViewController } from '@ionic-native/safari-view-controller';
 import { AdminMainPage } from '../pages/admin-main/admin-main';
+import { SafariViewController } from '@ionic-native/safari-view-controller';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +20,7 @@ import { AdminMainPage } from '../pages/admin-main/admin-main';
 export class MyApp {
   @ViewChild('container') nav: NavController;
 
-  rootPage: any = AdminMainPage;
+  rootPage: any = MainPage;
 
   main: any = MainPage;
   introduce: any = IntroducePage;
@@ -29,6 +29,7 @@ export class MyApp {
   road_to: any = RoadToPage;
   notice: any = NoticePage;  
   feed: any = FeedPage;
+  admin_main: any = AdminMainPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController, private safari: SafariViewController) {
     platform.ready().then(() => {
