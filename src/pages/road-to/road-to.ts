@@ -33,11 +33,13 @@ export class RoadToPage {
     // });
   }
   navi(){
-    Kakao.Navi.share({
-        name: "현대백화점 판교점",
-        x: 127.11205203011632,
-        y: 37.39279717586919,
-        coordType: 'wgs84'
-    });
+    // Kakao.Navi.share({
+    //     name: "예티쉼터",
+    //     x: 129.277549,
+    //     y: 35.952027,
+    //     coordType: 'wgs84'
+    // });
+    // window.open('kakaonavi://navi?x=127.11205203011632&y=37.39279717586919&coordType=wgs84', '_system', 'location=no');
+    window.open('daummaps://look?p=35.952027,129.277549&by=CAR', '_system', 'location=no');
   }
 }

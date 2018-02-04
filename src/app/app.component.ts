@@ -57,30 +57,31 @@ export class MyApp {
   }
 
   facebook() {
-    this.safari.isAvailable()
-    .then((available: boolean) => {
-        if (available) {
-          this.safari.show({
-            url: 'https://www.facebook.com',
-            hidden: false,
-            animated: false,
-            transition: 'curl',
-            enterReaderModeIfAvailable: true,
-            tintColor: '#ff0000'
-          })
-          .subscribe((result: any) => {
-              if(result.event === 'opened') console.log('Opened');
-              else if(result.event === 'loaded') console.log('Loaded');
-              else if(result.event === 'closed') console.log('Closed');
-            },
-            (error: any) => console.error(error)
-          );
+    window.open('fb://profile/100004612444209', '_system', 'location=no');
+    // this.safari.isAvailable()
+    // .then((available: boolean) => {
+    //     if (available) {
+    //       this.safari.show({
+    //         url: 'https://www.facebook.com',
+    //         hidden: false,
+    //         animated: false,
+    //         transition: 'curl',
+    //         enterReaderModeIfAvailable: true,
+    //         tintColor: '#ff0000'
+    //       })
+    //       .subscribe((result: any) => {
+    //           if(result.event === 'opened') console.log('Opened');
+    //           else if(result.event === 'loaded') console.log('Loaded');
+    //           else if(result.event === 'closed') console.log('Closed');
+    //         },
+    //         (error: any) => console.error(error)
+    //       );
 
-        } else {
-          // use fallback browser, example InAppBrowser
-        }
-      }
-    );
+    //     } else {
+    //       // use fallback browser, example InAppBrowser
+    //     }
+    //   }
+    // );
   }
 }
 
