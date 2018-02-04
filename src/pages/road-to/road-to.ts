@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SafariViewController } from '@ionic-native/safari-view-controller';
 
-declare const Kakao:any;
-
 @IonicPage()
 @Component({
   selector: 'page-road-to',
@@ -14,12 +12,9 @@ export class RoadToPage {
   }
 
   ionViewDidLoad() {
-    // Kakao.init('803c6435507c9f64e94bae8fd137012e');
   }
 
   navi() {
-    console.log('네비버튼 클릭');
-    
     this.safari.isAvailable()
     .then((available: boolean) => {
         if (available) {
@@ -44,12 +39,5 @@ export class RoadToPage {
         }
       }
     );
-    
-    // Kakao.Navi.start({
-    //   name: "예티쉼터",
-    //   x: 129.277549,
-    //   y: 35.952027,
-    //   coordType: 'wgs84'
-    // });
   }
 }

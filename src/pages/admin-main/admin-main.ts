@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AdminNoticePage } from '../admin-notice/admin-notice';
 
 @IonicPage()
 @Component({
@@ -14,4 +15,7 @@ export class AdminMainPage {
   ionViewDidLoad() {
   }
 
+  writeNotice() {
+    this.navCtrl.push(AdminNoticePage);
+  }
 }

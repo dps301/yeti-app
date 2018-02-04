@@ -20,7 +20,7 @@ import { AdminMainPage } from '../pages/admin-main/admin-main';
 export class MyApp {
   @ViewChild('container') nav: NavController;
 
-  rootPage: any = MainPage;
+  rootPage: any = AdminMainPage;
 
   main: any = MainPage;
   introduce: any = IntroducePage;
