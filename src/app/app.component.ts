@@ -11,9 +11,8 @@ import { OrgChartPage } from '../pages/org-chart/org-chart';
 import { RoadToPage } from '../pages/road-to/road-to';
 import { NoticePage } from '../pages/notice/notice';
 import { FeedPage } from '../pages/feed/feed';
-import { SafariViewController } from '@ionic-native/safari-view-controller';
 import { AdminMainPage } from '../pages/admin-main/admin-main';
-declare const Kakao:any;
+import { SafariViewController } from '@ionic-native/safari-view-controller';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,12 +29,12 @@ export class MyApp {
   road_to: any = RoadToPage;
   notice: any = NoticePage;  
   feed: any = FeedPage;
+  admin_main: any = AdminMainPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController, private safari: SafariViewController) {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
-      Kakao.init('803c6435507c9f64e94bae8fd137012e');
     });
   }
 

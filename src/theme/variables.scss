@@ -5,6 +5,16 @@
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
 
+@font-face {
+  font-family: 'JejuGothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/JejuGothic-Regular.ttf') format('truetype');
+}
+
+$font-family-md-base: "JejuGothic";
+$font-family-ios-base: "JejuGothic";
+$font-family-wp-base: "JejuGothic";
 
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:

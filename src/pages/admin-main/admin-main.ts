@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the AdminMainPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AdminNoticePage } from '../admin-notice/admin-notice';
 
 @IonicPage()
 @Component({
@@ -19,7 +13,9 @@ export class AdminMainPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AdminMainPage');
   }
 
+  writeNotice() {
+    this.navCtrl.push(AdminNoticePage);
+  }
 }
