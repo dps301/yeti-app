@@ -1,3 +1,24 @@
 page-org-chart {
+    .bg{
+        background-color: white;
+        padding-bottom: 40px;
+    }
+    
+    table{
+        background-color: white;
+        width: 90%;
+        margin-top: 30px;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    td{
+        width: 50%;
+        padding: 10px 10px;
+    }
+    .left{
+        background-color: #f697a3;
+    }
+    .right{
 
+    }
 }

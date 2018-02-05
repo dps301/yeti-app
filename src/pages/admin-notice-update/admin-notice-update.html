@@ -1,0 +1,16 @@
+<ion-content padding>
+    <yeti-content>
+      <div class="title">
+        공지작성
+      </div>
+      <div>
+        제목 : <input [(ngModel)]="title">
+        <br>
+        <div>
+            내용 : <textarea [(ngModel)]="noticeModel"></textarea>
+        </div>
+        <button (click)="save()">저장</button>
+      </div>
+    </yeti-content>
+  </ion-content>
+    
