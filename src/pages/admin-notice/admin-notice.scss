@@ -1,6 +1,21 @@
 page-admin-notice {
-    textarea {
-        width: 100%;
-        min-height: 200px;
+    .title {
+        padding: 10px 0px;
+        color: #7b5842;
+        font-size: 2.3rem;
+        font-weight: 500;
+    }
+
+    .row {
+        background: white;
+        margin: 10px 0px;
+        padding: 10px;
+    }
+
+    ion-footer {
+        background: #f697a3;
+        padding: 15px 0px;
+        color: white;
+        text-align: center;
     }
 }

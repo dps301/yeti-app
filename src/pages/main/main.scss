@@ -2,7 +2,6 @@ page-main {
     .scroll-content {
         display: flex;
         flex-direction: column;
-        height: 100%;
         width: 100%;
         overflow: hidden;
     }
@@ -22,6 +21,7 @@ page-main {
             width: 100%;
         }
     }
+    
     .menu-row {
         flex-grow: 1;
         flex-shrink: 0;
@@ -53,6 +53,31 @@ page-main {
                     margin-bottom: 5px;
                 }
             }
+        }
+    }
+
+    .main-footer {
+        display: flex;
+        flex-direction: row;
+        background: #f3f3f3;
+        height: 50px;
+        padding: 0px 15px;
+
+        img {
+            width: 50%;
+            display: block;
+            margin: auto;
+        }
+
+        ion-row, ion-col {
+            padding: 0px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        ion-col {
+            padding: 5px 0px;
         }
     }
 }

@@ -10,52 +10,58 @@ import { AdminNoticeWritePage } from '../admin-notice-write/admin-notice-write';
   templateUrl: 'admin-notice.html',
 })
 export class AdminNoticePage {
-  title:string="";
-  notice_txt: string = "";
-  limit=5;
-  offset=0;
-  notice_list: Array<any>
+  limit: number = 4;
+  offset: number = 0;
+  list: Array<any> = [];
+  ended: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,private http:HttpService) {
-    this.load();
   }
 
   ionViewDidLoad() {
-    this.load();
+    this.load()
+    .then(data => {
+      this.list = this.list.concat(data.json().list);
+      if(this.list.length > 0 && this.list.length != data.json().total)
+        this.offset += this.limit;
+      else
+        this.ended = true;
+    });
   }
 
-  get noticeModel() {
-    return this.notice_txt;
-  }
-  set noticeModel(val) {
-    this.notice_txt = val;
+  load() {
+    return this.http.get(`/notice?limit=${this.limit}&offset=${this.offset}`).toPromise();
   }
 
-  // 서버 저장하기 전에 /n -> <br/>로 변환시킨 값을 저장.
-  getNoticeTxt() {
-    return this.notice_txt.replace(/\r\n|\r|\n/g,"<br/>");
+  doInfinite(infiniteScroll) {
+    if(!this.ended) {
+      this.load()
+      .then(data => {
+        this.list = this.list.concat(data.json().list);
+        this.offset += this.limit;
+        infiniteScroll.complete();
+      })
+      .catch(() => {
+        infiniteScroll.complete();
+      });
+    }
+    else {
+      infiniteScroll.complete();
+    }
   }
 
-  // 서버에서 불러와서 수정해야하는 상황일 때, <br/> -> /n으로 변환
-  setNoticeTxt(txt: string) {
-    return this.notice_txt = txt.replace(/<br\s?\/?>/g,"\n");
+  goDetail(item) {
+    this.navCtrl.push(AdminNoticeUpdatePage, {item:item});
   }
-  
-  load(){
-    this.http.get(`/notice?limit=5&offset=${this.offset}`)
-    .subscribe(data =>{
-      this.notice_list = data.json();
-    })
+
+  write() {
+    this.navCtrl.push(AdminNoticeWritePage);
   }
-  goDetail(item){
-    this.navCtrl.push(AdminNoticeUpdatePage,{item:item})
-  }
-  write(){
-    this.navCtrl.push(AdminNoticeWritePage)
-  }
-  delete(notice_no){
+
+  delete(notice_no) {
     this.http.delete(`/notice?notice_no=${notice_no}`)
     .subscribe(data =>{
       this.load();
-    })
+    });
   }
 }
