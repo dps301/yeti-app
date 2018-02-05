@@ -7,6 +7,7 @@ import { RoadToPage } from '../road-to/road-to';
 import { NoticePage } from '../notice/notice';
 import { FeedPage } from '../feed/feed';
 import { App } from 'ionic-angular';
+import { SafariViewController } from '@ionic-native/safari-view-controller';
 
 @IonicPage()
 @Component({
@@ -47,7 +48,7 @@ export class MainPage {
     }
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App, public safari: SafariViewController) {
   }
 
   ionViewDidLoad() {
@@ -55,6 +56,34 @@ export class MainPage {
   }
 
   goTo(link) {
-    this.app.getRootNavs()[0].push(link, {}, {animate: true, animation: 'ios'});
+    if(link == RoadToPage) {
+      this.safari.isAvailable()
+      .then((available: boolean) => {
+          if (available) {
+            this.safari.show({
+              url: 'http://yety.cafe24app.com/',
+              hidden: false,
+              animated: false,
+              transition: 'curl',
+              enterReaderModeIfAvailable: true,
+              tintColor: '#ff0000'
+            })
+            .subscribe((result: any) => {
+                if(result.event === 'opened') console.log('Opened');
+                else if(result.event === 'loaded') console.log('Loaded');
+                else if(result.event === 'closed') console.log('Closed');
+              },
+              (error: any) => console.error(error)
+            );
+
+          } else {
+            // use fallback browser, example InAppBrowser
+          }
+        }
+      );
+    }
+    else {
+      this.app.getRootNavs()[0].push(link, {}, {animate: true, animation: 'ios'});
+    }
   }
 }

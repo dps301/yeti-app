@@ -10,7 +10,7 @@ import { AdminNoticeWritePage } from '../admin-notice-write/admin-notice-write';
   templateUrl: 'admin-notice.html',
 })
 export class AdminNoticePage {
-  limit: number = 4;
+  limit: number = 10;
   offset: number = 0;
   list: Array<any> = [];
   ended: boolean = false;
@@ -38,7 +38,10 @@ export class AdminNoticePage {
       this.load()
       .then(data => {
         this.list = this.list.concat(data.json().list);
-        this.offset += this.limit;
+        if(this.list.length > 0 && this.list.length != data.json().total)
+          this.offset += this.limit;
+        else
+          this.ended = true;
         infiniteScroll.complete();
       })
       .catch(() => {
