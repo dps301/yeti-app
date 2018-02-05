@@ -20,13 +20,12 @@ export class AdminNoticeUpdatePage {
   notice_txt: any = "";
   notice_no:number;
   constructor(public navCtrl: NavController, public navParams: NavParams,private http:HttpService) {
-    this.notice_no = this.navParams.data.item.notice_no;
-    this.title = this.navParams.data.item.title;
-    this.setNoticeTxt(this.navParams.data.item.content);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AdminNoticeWritePage');
+    this.notice_no = this.navParams.data.item.notice_no;
+    this.title = this.navParams.data.item.title;
+    this.setNoticeTxt(this.navParams.data.item.content);
   }
 
   get noticeModel() {
@@ -50,7 +49,7 @@ export class AdminNoticeUpdatePage {
     let body = {
       notice_no:this.notice_no,
       title : this.title,
-      content : this.notice_txt
+      content : this.getNoticeTxt()
     }
     this.http.put(`/notice`,body)
     .subscribe(()=>{

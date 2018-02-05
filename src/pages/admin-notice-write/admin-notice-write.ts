@@ -35,20 +35,15 @@ export class AdminNoticeWritePage {
   getNoticeTxt() {
     return this.notice_txt.replace(/\r\n|\r|\n/g,"<br/>");
   }
-
-  // 서버에서 불러와서 수정해야하는 상황일 때, <br/> -> /n으로 변환
-  setNoticeTxt(txt: string) {
-    return this.notice_txt = txt.replace(/<br\s?\/?>/g,"\n");
-  }
   
   save(){
     let body = {
       title : this.title,
-      content : this.notice_txt
+      content : this.getNoticeTxt()
     }
     this.http.post(`/notice`,body)
     .subscribe(()=>{
       this.navCtrl.pop();
-    })
+    });
   }
 }

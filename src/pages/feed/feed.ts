@@ -8,25 +8,44 @@ import { HttpService } from '../../services/http.service';
   templateUrl: 'feed.html',
 })
 export class FeedPage {
-  limit=5;
-  offset=0;
-  choice=0;
-  list: Array<any>
+  limit: number = 4;
+  offset: number = 0;
+  list: Array<any> = [];
+  ended: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private http:HttpService) {
     
   }
 
-  ionViewWillLoad(){
-    this.load();
-  }
   ionViewDidLoad() {
+    this.load()
+    .then(data => {
+      this.list = this.list.concat(data.json().list);
+      if(this.list.length > 0 && this.list.length != data.json().total)
+        this.offset += this.limit;
+      else
+        this.ended = true;
+    });
   }
 
-  load(){
-    this.http.get(`/timeline?limit=5&offset=${this.offset}`)
-    .subscribe(data =>{
-      this.list = data.json();
-    })
+  load() {
+    return this.http.get(`/timeline?limit=${this.limit}&offset=${this.offset}`).toPromise();
+  }
+
+  doInfinite(infiniteScroll) {
+    if(!this.ended) {
+      this.load()
+      .then(data => {
+        this.list = this.list.concat(data.json().list);
+        this.offset += this.limit;
+        infiniteScroll.complete();
+      })
+      .catch(() => {
+        infiniteScroll.complete();
+      });
+    }
+    else {
+      infiniteScroll.complete();
+    }
   }
 }
