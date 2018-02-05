@@ -1,8 +1,8 @@
 <ion-content padding>
   <div class="title">
-      공지사항
+      공지등록
   </div>
-  <div class="row" (click)="goDetail(item)" *ngFor="let item of list">
+  <div class="row" *ngFor="let item of list">
     <span (click)="goDetail(item)">{{item.title}}</span>
     <button (click)="delete(item.notice_no)">삭제</button>
   </div>

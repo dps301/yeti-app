@@ -3,28 +3,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ServerAddr } from '../../services/server.addr';
 import { FileUploader } from 'ng2-file-upload';
 
-/**
- * Generated class for the AdminTimelineUpdatePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-admin-timeline-update',
   templateUrl: 'admin-timeline-update.html',
 })
 export class AdminTimelineUpdatePage {
-  item:any;
-  notice_txt = "";
-  addr="";
   public uploader:FileUploader;
+  item: any;
+  notice_txt = "";
+  addr: string = "";
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.item=this.navParams.data.item
+  }
+
+  ionViewDidLoad() {
+    this.item = this.navParams.data.item;
+    this.setNoticeTxt(this.item.content);
     this.addr = ServerAddr.getServerAddr();
     this.uploader = new FileUploader({url:`${this.addr}/imgload/${this.item.timeline_no}`});
   }
+
   uploadImg(no){
     this.uploader = new FileUploader({url:`/imgload/${this.item.timeline_no}`});
   }
@@ -45,5 +44,4 @@ export class AdminTimelineUpdatePage {
   setNoticeTxt(txt: string) {
     return this.item.content = txt.replace(/<br\s?\/?>/g,"\n");
   }
-
 }

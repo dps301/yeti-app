@@ -10,6 +10,11 @@ page-admin-notice {
         background: white;
         margin: 10px 0px;
         padding: 10px;
+        justify-content: space-between;
+
+        span {
+            flex-grow: 1;
+        }
     }
 
     ion-footer {
