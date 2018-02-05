@@ -20,7 +20,7 @@ import { SafariViewController } from '@ionic-native/safari-view-controller';
 export class MyApp {
   @ViewChild('container') nav: NavController;
 
-  rootPage: any = AdminMainPage;
+  rootPage: any = SupportPage;
 
   main: any = MainPage;
   introduce: any = IntroducePage;
@@ -31,7 +31,7 @@ export class MyApp {
   feed: any = FeedPage;
   admin_main: any = AdminMainPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController, private safari: SafariViewController) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController) {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
@@ -57,30 +57,6 @@ export class MyApp {
 
   facebook() {
     window.open('fb://profile/100004612444209', '_system', 'location=no');
-    // this.safari.isAvailable()
-    // .then((available: boolean) => {
-    //     if (available) {
-    //       this.safari.show({
-    //         url: 'https://www.facebook.com',
-    //         hidden: false,
-    //         animated: false,
-    //         transition: 'curl',
-    //         enterReaderModeIfAvailable: true,
-    //         tintColor: '#ff0000'
-    //       })
-    //       .subscribe((result: any) => {
-    //           if(result.event === 'opened') console.log('Opened');
-    //           else if(result.event === 'loaded') console.log('Loaded');
-    //           else if(result.event === 'closed') console.log('Closed');
-    //         },
-    //         (error: any) => console.error(error)
-    //       );
-
-    //     } else {
-    //       // use fallback browser, example InAppBrowser
-    //     }
-    //   }
-    // );
   }
 }
 
