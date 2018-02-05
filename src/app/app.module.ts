@@ -20,6 +20,7 @@ import { FeedItemModule } from '../components/feed-item/feed-item.module';
 import { FeedItemComponent } from '../components/feed-item/feed-item';
 import { MainPageModule } from '../pages/main/main.module';
 import { AdminMainPageModule } from '../pages/admin-main/admin-main.module';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AdminMainPageModule } from '../pages/admin-main/admin-main.module';
     MyApp,
   ],
   providers: [
+    FileUploadModule,
     HttpService,
     ServerAddr,
     StatusBar,

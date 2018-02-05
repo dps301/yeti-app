@@ -1,0 +1,6 @@
+<ion-content padding>
+  
+  <div *ngFor="let item of list" class="feed">
+    {{item.content}} {{item.dttm}} <button (click)="update(item)">수정</button>
+  </div>
+</ion-content>

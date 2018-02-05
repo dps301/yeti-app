@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AdminNoticePage } from '../admin-notice/admin-notice';
+import { AdminTimelinePage } from '../admin-timeline/admin-timeline';
 
 @IonicPage()
 @Component({
@@ -8,14 +9,17 @@ import { AdminNoticePage } from '../admin-notice/admin-notice';
   templateUrl: 'admin-main.html',
 })
 export class AdminMainPage {
-
+  p = [
+    AdminNoticePage,
+    AdminTimelinePage
+  ]
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
   }
 
-  writeNotice() {
-    this.navCtrl.push(AdminNoticePage);
+  choice(page) {
+    this.navCtrl.push(this.p[page]);
   }
 }

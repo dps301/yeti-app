@@ -1,26 +1,27 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpService } from '../../services/http.service';
-import { AdminNoticeUpdatePage } from '../admin-notice-update/admin-notice-update';
-import { AdminNoticeWritePage } from '../admin-notice-write/admin-notice-write';
+
+/**
+ * Generated class for the AdminNoticeWritePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @IonicPage()
 @Component({
-  selector: 'page-admin-notice',
-  templateUrl: 'admin-notice.html',
+  selector: 'page-admin-notice-write',
+  templateUrl: 'admin-notice-write.html',
 })
-export class AdminNoticePage {
+export class AdminNoticeWritePage {
   title:string="";
   notice_txt: string = "";
-  limit=5;
-  offset=0;
-  notice_list: Array<any>
   constructor(public navCtrl: NavController, public navParams: NavParams,private http:HttpService) {
-    this.load();
   }
 
   ionViewDidLoad() {
-    this.load();
+    console.log('ionViewDidLoad AdminNoticeWritePage');
   }
 
   get noticeModel() {
@@ -40,22 +41,14 @@ export class AdminNoticePage {
     return this.notice_txt = txt.replace(/<br\s?\/?>/g,"\n");
   }
   
-  load(){
-    this.http.get(`/notice?limit=5&offset=${this.offset}`)
-    .subscribe(data =>{
-      this.notice_list = data.json();
-    })
-  }
-  goDetail(item){
-    this.navCtrl.push(AdminNoticeUpdatePage,{item:item})
-  }
-  write(){
-    this.navCtrl.push(AdminNoticeWritePage)
-  }
-  delete(notice_no){
-    this.http.delete(`/notice?notice_no=${notice_no}`)
-    .subscribe(data =>{
-      this.load();
+  save(){
+    let body = {
+      title : this.title,
+      content : this.notice_txt
+    }
+    this.http.post(`/notice`,body)
+    .subscribe(()=>{
+      this.navCtrl.pop();
     })
   }
 }
