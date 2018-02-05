@@ -12,7 +12,7 @@
         "ionic:serve": "ionic-app-scripts serve"
     },
     "platforms": [
-      "android"
+        "android"
     ],
     "dependencies": {
         "@angular/common": "5.0.3",

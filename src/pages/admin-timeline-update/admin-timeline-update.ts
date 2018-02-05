@@ -11,7 +11,7 @@ import { HttpService } from '../../services/http.service';
 })
 export class AdminTimelineUpdatePage {
   item:any;
-  no:number;
+  no:number=0;
   notice_txt = "";
   addr="";
   body = {
@@ -23,13 +23,15 @@ export class AdminTimelineUpdatePage {
     this.no=this.navParams.data.item.timeline_no
     this.item=this.navParams.data.item
     console.log(this.navParams.data.item.timeline_no)
+    this.load(this.no);
+    this.uploadImg(this.no);
   }
   ionViewDidLoad() {
     this.item = this.navParams.data.item;
     this.setNoticeTxt(this.item.content);
     this.addr = ServerAddr.getServerAddr();
-    this.uploadImg(this.no);
-    this.load(this.no);
+    
+    
   }
 
   uploadImg(no){
@@ -47,7 +49,6 @@ export class AdminTimelineUpdatePage {
     })
   }
   load(no){
-    console.log("no",no)
     this.http.get(`/timeline/one?timeline_no=${no}`)
     .subscribe(data =>{
       this.item = data.json();

@@ -1,4 +1,4 @@
-<ion-content padding>  
+<ion-content padding *ngIf="no!=0">  
   <textarea [(ngModel)]="noticeModel"></textarea>
   <div *ngFor="let img of item.img">
     <img [src]="addr+img.imgUrl"> <button>삭제</button>

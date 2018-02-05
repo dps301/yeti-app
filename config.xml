@@ -80,7 +80,6 @@
     </platform>
     <allow-navigation href="http://192.168.0.4:8100" />
     <allow-navigation href="http://192.168.0.17:8100" />
-    <engine name="android" spec="^7.0.0" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
     <plugin name="cordova-plugin-safariviewcontroller" spec="^1.5.2" />
@@ -89,4 +88,5 @@
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="cordova-plugin-appavailability" spec="^0.4.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
+    <engine name="android" spec="^7.0.0" />
 </widget>
