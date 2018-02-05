@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ServerAddr } from '../../services/server.addr';
 import { FileUploader } from 'ng2-file-upload';
+import { HttpService } from '../../services/http.service';
 
 /**
  * Generated class for the AdminTimelineUpdatePage page.
@@ -17,16 +18,46 @@ import { FileUploader } from 'ng2-file-upload';
 })
 export class AdminTimelineUpdatePage {
   item:any;
+  no:number;
   notice_txt = "";
   addr="";
+  body = {
+    imgUrl:null,
+    timeline_no:null
+  }
   public uploader:FileUploader;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http:HttpService) {
+    this.no=this.navParams.data.item.timeline_no
     this.item=this.navParams.data.item
+    console.log(this.navParams.data.item.timeline_no)
     this.addr = ServerAddr.getServerAddr();
-    this.uploader = new FileUploader({url:`${this.addr}/imgload/${this.item.timeline_no}`});
+    this.uploadImg(this.no);
+  }
+  ionViewDidLoad(){
+    this.load(this.no)
+    
   }
   uploadImg(no){
-    this.uploader = new FileUploader({url:`/imgload/${this.item.timeline_no}`});
+    let name = Date.now();
+    this.body = {
+      imgUrl:`/img/${name}.png`,
+      timeline_no:no
+    }
+    this.uploader = new FileUploader({url:`${this.addr}/imgload/${name}`});    
+  }
+  uploadImgServer(no){
+    this.http.post(`/timeline/img`,this.body).subscribe(()=>{
+      this.load(no)
+      this.uploadImg(no)
+    })
+  }
+  load(no){
+    console.log("no",no)
+    this.http.get(`/timeline/one?timeline_no=${no}`)
+    .subscribe(data =>{
+      this.item = data.json();
+      console.log(this.item)
+    })
   }
 
   get noticeModel() {
