@@ -10,23 +10,44 @@ import { AdminNoticeWritePage } from '../admin-notice-write/admin-notice-write';
   templateUrl: 'admin-notice.html',
 })
 export class AdminNoticePage {
-  limit: number = 5;
+  limit: number = 4;
   offset: number = 0;
-  notice_list: Array<any> = [];
+  list: Array<any> = [];
+  ended: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private http:HttpService) {
-    this.load();
   }
 
   ionViewDidLoad() {
-    this.load();
-  }
-  
-  load() {
-    this.http.get(`/notice?limit=5&offset=${this.offset}`)
-    .subscribe(data =>{
-      this.notice_list = data.json();
+    this.load()
+    .then(data => {
+      this.list = this.list.concat(data.json().list);
+      if(this.list.length > 0 && this.list.length != data.json().total)
+        this.offset += this.limit;
+      else
+        this.ended = true;
     });
+  }
+
+  load() {
+    return this.http.get(`/notice?limit=${this.limit}&offset=${this.offset}`).toPromise();
+  }
+
+  doInfinite(infiniteScroll) {
+    if(!this.ended) {
+      this.load()
+      .then(data => {
+        this.list = this.list.concat(data.json().list);
+        this.offset += this.limit;
+        infiniteScroll.complete();
+      })
+      .catch(() => {
+        infiniteScroll.complete();
+      });
+    }
+    else {
+      infiniteScroll.complete();
+    }
   }
 
   goDetail(item) {
