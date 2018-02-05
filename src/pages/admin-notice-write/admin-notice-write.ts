@@ -2,21 +2,15 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpService } from '../../services/http.service';
 
-/**
- * Generated class for the AdminNoticeWritePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-admin-notice-write',
   templateUrl: 'admin-notice-write.html',
 })
 export class AdminNoticeWritePage {
-  title:string="";
+  title: string = "";
   notice_txt: string = "";
+
   constructor(public navCtrl: NavController, public navParams: NavParams,private http:HttpService) {
   }
 
