@@ -55,6 +55,12 @@ export class AdminTimelineUpdatePage {
       console.log(this.item)
     })
   }
+  delete(img){
+    this.http.delete(`/timeline/img?img_no=${img.img_no}&imgUrl=${img.imgUrl}`)
+    .subscribe(data =>{
+      this.load(this.no)
+    })
+  }
 
   get noticeModel() {
     return this.item.content;

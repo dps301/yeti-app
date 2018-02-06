@@ -20,7 +20,7 @@ import { SafariViewController } from '@ionic-native/safari-view-controller';
 export class MyApp {
   @ViewChild('container') nav: NavController;
 
-  rootPage: any = SupportPage;
+  rootPage: any = AdminMainPage;
 
   main: any = MainPage;
   introduce: any = IntroducePage;

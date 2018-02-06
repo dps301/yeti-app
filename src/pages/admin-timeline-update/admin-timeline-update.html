@@ -1,7 +1,7 @@
 <ion-content padding *ngIf="no!=0">  
   <textarea [(ngModel)]="noticeModel"></textarea>
   <div *ngFor="let img of item.img">
-    <img [src]="addr+img.imgUrl"> <button>삭제</button>
+    <img [src]="addr+img.imgUrl"> <button (click)="delete(img)">삭제</button>
   </div>
   <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />    
   <div *ngFor="let item of uploader.queue">

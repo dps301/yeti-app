@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpService } from '../../services/http.service';
 import { AdminTimelineUpdatePage } from '../admin-timeline-update/admin-timeline-update';
+import { AdminTimelineWritePage } from '../admin-timeline-write/admin-timeline-write';
 
 @IonicPage()
 @Component({
@@ -51,5 +52,8 @@ export class AdminTimelinePage {
 
   goDetail(item) {
     this.navCtrl.push(AdminTimelineUpdatePage, {item: item});
+  }
+  write(){
+    this.navCtrl.push(AdminTimelineWritePage);
   }
 }
