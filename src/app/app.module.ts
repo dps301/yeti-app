@@ -21,6 +21,7 @@ import { FeedItemComponent } from '../components/feed-item/feed-item';
 import { MainPageModule } from '../pages/main/main.module';
 import { AdminMainPageModule } from '../pages/admin-main/admin-main.module';
 import { FileUploadModule } from 'ng2-file-upload';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SafariViewController
+    SafariViewController,
+    PhotoViewer
   ]
 })
 export class AppModule {}
