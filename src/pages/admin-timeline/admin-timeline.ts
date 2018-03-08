@@ -32,6 +32,16 @@ export class AdminTimelinePage {
   load() {
     return this.http.get(`/timeline?limit=${this.limit}&offset=${this.offset}`).toPromise();
   }
+  add(){
+    this.load()
+    .then(data => {
+      this.list = this.list.concat(data.json().list);
+      if(this.list.length > 0 && this.list.length != data.json().total)
+        this.offset += this.limit;
+      else
+        this.ended = true;
+    });
+  }
 
   doInfinite(infiniteScroll) {
     if(!this.ended) {
@@ -55,5 +65,16 @@ export class AdminTimelinePage {
   }
   write(){
     this.navCtrl.push(AdminTimelineWritePage);
+  }
+  delete(no){
+    this.http.delete(`/timeline?timeline_no=${no}`)
+    .subscribe(()=>{
+      this.limit =4 ;
+      this.offset = 0;
+      this.load()
+      .then(data => {
+        this.list = data.json().list
+      });
+    })
   }
 }

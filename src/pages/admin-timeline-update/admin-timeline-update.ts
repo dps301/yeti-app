@@ -61,7 +61,15 @@ export class AdminTimelineUpdatePage {
       this.load(this.no)
     })
   }
-
+  put(){
+    let body = {
+      timeline_no:this.no,
+      content:this.getNoticeTxt()
+    }
+    this.http.put(`/timeline`,body).subscribe(()=>{
+      this.load(this.no)
+    })
+  }
   get noticeModel() {
     return this.item.content;
   }

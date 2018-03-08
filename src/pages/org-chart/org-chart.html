@@ -1,26 +1,26 @@
 <ion-content padding>
     <div class="bg">
         <img [src]="'assets/imgs/organ.gif'">
-        <table>
+        <table *ngIf="member!=null">
             <tr>
                 <td class="left">총인원</td>
-                <td class="right">9명</td>
+                <td class="right">{{total}}명</td>
             </tr>
             <tr>
                 <td class="left">원장</td>
-                <td class="right">1명</td>
+                <td class="right">{{member[0].document}}명</td>
             </tr>
             <tr>
                 <td class="left">사회복지사</td>
-                <td class="right">5명</td>
+                <td class="right">{{member[1].document}}명</td>
             </tr>
             <tr>
                 <td class="left">보육보조</td>
-                <td class="right">2명</td>
+                <td class="right">{{member[2].document}}명</td>
             </tr>
             <tr>
                 <td class="left">주방찬모</td>
-                <td class="right">1명</td>
+                <td class="right">{{member[3].document}}명</td>
             </tr>
         </table>
     </div>

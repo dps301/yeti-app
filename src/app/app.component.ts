@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, NavController } from 'ionic-angular';
+import { Platform, NavController, App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MenuController } from 'ionic-angular';
@@ -20,7 +20,7 @@ import { SafariViewController } from '@ionic-native/safari-view-controller';
 export class MyApp {
   @ViewChild('container') nav: NavController;
 
-  rootPage: any = AdminMainPage;
+  rootPage: any = MainPage;
 
   main: any = MainPage;
   introduce: any = IntroducePage;
@@ -30,9 +30,41 @@ export class MyApp {
   notice: any = NoticePage;  
   feed: any = FeedPage;
   admin_main: any = AdminMainPage;
-
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController) {
+  menu: Array<any> = [
+    {
+      name: '인사말',
+      link: IntroducePage,
+      img: 'assets/imgs/handshake.png'
+    },
+    {
+      name: '후원안내',
+      link: SupportPage,
+      img: 'assets/imgs/charity.png'
+    },
+    {
+      name: '조직도',
+      link: OrgChartPage,
+      img: 'assets/imgs/diagram.png'
+    },
+    {
+      name: '오시는 길',
+      link: RoadToPage,
+      img: 'assets/imgs/map.png'
+    },
+    {
+      name: '공지사항',
+      link: NoticePage,
+      img: 'assets/imgs/megaphone.png'
+    },
+    {
+      name: '소식',
+      link: FeedPage,
+      img: 'assets/imgs/email.png'
+    }
+  ];
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController, public app: App, public safari: SafariViewController) {
     platform.ready().then(() => {
+      statusBar.overlaysWebView(false);
       statusBar.styleDefault();
       splashScreen.hide();
     });
@@ -43,7 +75,35 @@ export class MyApp {
   }
 
   navGo(page) {
-    this.nav.push(page, {}, {animate: true, animation: 'ios'});
+    if(page == RoadToPage) {
+      this.safari.isAvailable()
+      .then((available: boolean) => {
+          if (available) {
+            this.safari.show({
+              url: 'http://yety.cafe24app.com/',
+              hidden: false,
+              animated: false,
+              transition: 'curl',
+              enterReaderModeIfAvailable: true,
+              tintColor: '#ff0000'
+            })
+            .subscribe((result: any) => {
+                if(result.event === 'opened') console.log('Opened');
+                else if(result.event === 'loaded') console.log('Loaded');
+                else if(result.event === 'closed') console.log('Closed');
+              },
+              (error: any) => console.error(error)
+            );
+
+          } else {
+            // use fallback browser, example InAppBrowser
+          }
+        }
+      );
+    }
+    else {
+      this.nav.push(page, {}, {animate: true, animation: 'ios'});
+    }
     this.toggleMenu();
   }
 

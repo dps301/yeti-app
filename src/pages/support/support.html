@@ -19,11 +19,11 @@
                 지로용지, 무통장입금, 방문후원으로 지적장애인 복지사업에 참여할 수 있습니다.
             </div>
             <br/>
-            <div>
-                농협 721082-51-037459 예금주: 주사랑주간보호센터
+            <div *ngIf="bank!=null">
+                {{bank[0].document}}
             </div>
-            <div>
-                농협 721082-51-037391 예금주: 예사랑단기보호센터
+            <div *ngIf="bank!=null">
+                {{bank[1].document}}
             </div>
         </div>
         <div class="inner-section">
