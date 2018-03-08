@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ServerAddr } from '../../services/server.addr';
 import { FileUploader } from 'ng2-file-upload';
+import { HttpService } from '../../services/http.service';
 
 @IonicPage()
 @Component({
@@ -9,25 +10,66 @@ import { FileUploader } from 'ng2-file-upload';
   templateUrl: 'admin-timeline-update.html',
 })
 export class AdminTimelineUpdatePage {
-  public uploader:FileUploader;
-  item: any;
+  item:any;
+  no:number=0;
   notice_txt = "";
-  addr: string = "";
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  addr="";
+  body = {
+    imgUrl:null,
+    timeline_no:null
   }
-
+  public uploader:FileUploader;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http:HttpService) {
+    this.no=this.navParams.data.item.timeline_no
+    this.item=this.navParams.data.item
+    console.log(this.navParams.data.item.timeline_no)
+    this.load(this.no);
+    this.uploadImg(this.no);
+  }
   ionViewDidLoad() {
     this.item = this.navParams.data.item;
     this.setNoticeTxt(this.item.content);
     this.addr = ServerAddr.getServerAddr();
-    this.uploader = new FileUploader({url:`${this.addr}/imgload/${this.item.timeline_no}`});
+    
+    
   }
 
   uploadImg(no){
-    this.uploader = new FileUploader({url:`/imgload/${this.item.timeline_no}`});
+    let name = Date.now();
+    this.body = {
+      imgUrl:`/img/${name}.png`,
+      timeline_no:no
+    }
+    this.uploader = new FileUploader({url:`${this.addr}/imgload/${name}`});    
   }
-
+  uploadImgServer(no){
+    this.http.post(`/timeline/img`,this.body).subscribe(()=>{
+      this.load(no)
+      this.uploadImg(no)
+    })
+  }
+  load(no){
+    this.http.get(`/timeline/one?timeline_no=${no}`)
+    .subscribe(data =>{
+      this.item = data.json();
+      console.log(this.item)
+    })
+  }
+  delete(img){
+    this.http.delete(`/timeline/img?img_no=${img.img_no}&imgUrl=${img.imgUrl}`)
+    .subscribe(data =>{
+      this.load(this.no)
+    })
+  }
+  put(){
+    let body = {
+      timeline_no:this.no,
+      content:this.getNoticeTxt()
+    }
+    this.http.put(`/timeline`,body).subscribe(()=>{
+      this.load(this.no)
+    })
+  }
   get noticeModel() {
     return this.item.content;
   }

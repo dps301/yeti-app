@@ -1,12 +1,14 @@
-<ion-content padding>  
+<ion-content padding *ngIf="no!=0">  
   <textarea [(ngModel)]="noticeModel"></textarea>
+  <button (click)="put()">수정</button>
+  <br>
   <div *ngFor="let img of item.img">
-    <img [src]="addr+img.imgUrl"> <button>삭제</button>
+    <img [src]="addr+img.imgUrl"> <button (click)="delete(img)">삭제</button>
   </div>
   <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />    
   <div *ngFor="let item of uploader.queue">
     <button type="button" class="btn btn-success btn-xs"
-            (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+            (click)="item.upload();uploadImgServer(no)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
         <span class="glyphicon glyphicon-upload"></span> Upload
     </button>
   </div>
